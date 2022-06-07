@@ -64,7 +64,7 @@ module.exports = {
   },
   footer: {
     items: [
-      privacyPolicy,
+      { href: '/page/privacy-policy', label: 'Privacy Policy' },
       { href: '/page/copyright-information', label: 'Copyright Information' },
       { href: '/page/contact-us', label: 'Contact Us' },
       { href: '/site-map', label: 'Site Map' },
