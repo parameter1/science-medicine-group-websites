@@ -28,4 +28,22 @@ $ const { id, alias, name, pageNode } = input;
   <@section>
     <theme-hero-card-block query-params={ includeContentTypes: ["Video"] } alias="videos" />
   </@section>
+
+  <@section|{ aliases }| modifiers=["first"]>
+    <theme-gam-define-display-ad
+      name="rotation"
+      position="home_page"
+      aliases=aliases
+      modifiers=["max-width-970", "center", "margin-auto-x", "inline"]
+    />
+  </@section>
+
+  <@section>
+    <theme-section-list-deck-block aliases=["drug-discovery", "gene-and-cell-therapy", "immunology"] />
+  </@section>
+
+  <!-- Add back once determined what content goes under OMIC
+  <@section>
+    <theme-section-card-list-block alias="omics" />
+  </@section> -->
 </global-website-section-home-layout>
