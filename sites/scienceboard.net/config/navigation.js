@@ -7,8 +7,9 @@ const topics = [
   { href: '/cell-biology', label: 'Cell Biology' },
   { href: '/drug-discovery', label: 'Drug Discovery' },
   { href: '/gene-and-cell-therapy', label: 'Gene and Cell Therapy' },
-  { href: '/immunonology', label: 'Immunology' },
-  { href: '/omics', label: 'OMICs' },
+  { href: '/immunology', label: 'Immunology' },
+  // Not sure what content is supposed to go under OMIC
+  // { href: '/omics', label: 'OMICs' },
 ];
 
 const resources = [
