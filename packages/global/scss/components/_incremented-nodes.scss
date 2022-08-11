@@ -1,0 +1,15 @@
+.node-list {
+  $self: &;
+  &--incremented-nodes {
+    #{ $self }__nodes {
+      #{ $self }__node {
+        &::before {
+          display: flex;
+          align-items: center;
+          background-color: $primary;
+          color: $white;
+        }
+      }
+    }
+  }
+}
