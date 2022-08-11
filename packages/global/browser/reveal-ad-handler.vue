@@ -28,6 +28,8 @@ const rel = 'noopener noreferrer';
 const { warn } = console;
 
 export default {
+  inject: ['EventBus'],
+
   props: {
     id: {
       type: String,
@@ -72,6 +74,7 @@ export default {
     }
 
     window.addEventListener('message', this.listener);
+    this.EventBus.$emit('revealAdListenerAdded', {});
     googletag.cmd.push(() => {
       const slot = googletag.defineOutOfPageSlot(this.path, this.id).addService(googletag.pubads());
       const div = document.createElement('div');
