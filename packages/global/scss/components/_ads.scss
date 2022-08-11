@@ -1,0 +1,24 @@
+// Prevent Reveal Ad from causing CLS
+// @TODO determin if this should be moved to @parameter1/base-cms-marko-web
+#marko-web-reveal-ad-handler {
+  display: none;
+}
+.reveal-ad {
+  height: 298px;
+}
+body .document-container > .page:first-of-type {
+  margin-top: 298px;
+  // excluded the following page types as they dont use reskin ads
+  &.page--search,
+  &.page--authenticate,
+  &.page--login,
+  &.page--logout,
+  &.page--profile,
+  &.page--register {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+}
+body .document-container > .reveal-ad + .page {
+  margin-top: 0;
+}
