@@ -2376,6 +2376,14 @@
     http-errors "^1.8.0"
     node-fetch "^2.6.1"
 
+"@parameter1/base-cms-marko-web-reveal-ad@^2.75.1":
+  version "2.75.1"
+  resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-reveal-ad/-/base-cms-marko-web-reveal-ad-2.75.1.tgz#6df390011c4d6d109d86645ccca5d768a9ec0f46"
+  integrity sha512-wcT2R0HE84QZs6x18j5Fi0GgPL0wrX9McskGPnsEUveCwI22FTMY045N2BZS/+9MDy52FE0L9UBk173Yeg4+Mw==
+  dependencies:
+    "@parameter1/base-cms-object-path" "^2.75.1"
+    "@parameter1/base-cms-utils" "^2.75.1"
+
 "@parameter1/base-cms-marko-web-search@^2.80.0":
   version "2.80.0"
   resolved "https://registry.yarnpkg.com/@parameter1/base-cms-marko-web-search/-/base-cms-marko-web-search-2.80.0.tgz#f5e16de00475ca946e1d0aeaab00bbbe69e4e4ba"
