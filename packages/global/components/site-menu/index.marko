@@ -93,17 +93,6 @@ $ const hasUser = defaultValue(input.hasUser, false);
   <!-- mobile -->
   <marko-web-element block-name=blockName name="contents-mobile">
     <!-- primary section -->
-    <!-- Identity X navigation Items -->
-    <default-theme-site-menu-section
-      tag="nav"
-      block-name=blockName
-      items=site.getAsArray("navigation.user.items")
-      modifiers=["user"]
-      reg-enabled=regEnabled
-      has-user=hasUser
-    />
-    <!-- social -->
-    <social-icons block-name=blockName />
     <!-- primary section -->
     <default-theme-site-menu-section
       tag="nav"
@@ -122,5 +111,16 @@ $ const hasUser = defaultValue(input.hasUser, false);
       reg-enabled=regEnabled
       has-user=hasUser
     />
+    <!-- Identity X navigation Items -->
+    <default-theme-site-menu-section
+      tag="nav"
+      block-name=blockName
+      items=site.getAsArray("navigation.user.items")
+      modifiers=["user"]
+      reg-enabled=regEnabled
+      has-user=hasUser
+    />
+    <!-- social -->
+    <social-icons block-name=blockName />
   </marko-web-element>
 </marko-web-block>
