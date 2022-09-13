@@ -37,7 +37,6 @@ const resources = [
   { href: '/page/about-us', label: 'About Us' },
   { href: '/resources/cases', label: 'Cases' },
   { href: '/resources/conferences', label: 'Conferences' },
-  { href: '/point-of-care-testing', label: 'Point-of-Care Testing' },
   { href: '#', label: 'Showcasts' },
   { href: '/resources/vendors', label: 'Vendors' },
   { href: '/resources/video', label: 'Video' },
@@ -49,7 +48,7 @@ const topics = [
   { href: '/research-and-development', label: 'Research & Development', children: researchDevelopment },
   { href: '/diagnostic-technologies', label: 'Diagnostic Technologies', children: diagnosticTechnologies },
   { href: '/diseases', label: 'Diseases', children: diseases },
-  // { href: '/point-of-care-testing', label: 'Point-of-Care Testing' },
+  { href: '/point-of-care-testing', label: 'Point-of-Care Testing' },
 ];
 
 const mobileMenu = {
@@ -192,9 +191,10 @@ module.exports = {
     col1: {
       label: 'Topics',
       items: [
-        { href: '/business-insights', label: 'Business Insights' },
-        { href: '/diagnostic-technologies', label: 'Diagnostic Technologies' },
-        { href: '/diseases', label: 'Diseases' },
+        ...topics,
+        // { href: '/business-insights', label: 'Business Insights' },
+        // { href: '/diagnostic-technologies', label: 'Diagnostic Technologies' },
+        // { href: '/diseases', label: 'Diseases' },
       ],
     },
     col2: {
