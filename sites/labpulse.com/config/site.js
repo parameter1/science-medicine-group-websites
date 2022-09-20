@@ -52,9 +52,13 @@ module.exports = {
   gtm: {
     containerId: 'GTM-W5TZ4SS',
   },
-  // wufoo: {
-  //   userName: 'randallreilly',
-  // },
+  wufoo: {
+    userName: null,
+    submitEvent: {
+      formHash: null,
+      formHeight: 'auto',
+    },
+  },
   inquiry: {
     enabled: true,
     directSend: false,
