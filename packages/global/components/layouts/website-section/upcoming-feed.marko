@@ -4,7 +4,7 @@ import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
 $ const { id, alias, name, pageNode } = input;
 $ const sections = getAsArray(input, "sections");
 
-$ const { pagination: p } = out.global;
+$ const { pagination: p, site } = out.global;
 $ const withAds = defaultValue(input.withAds, false);
 $ const now = Date.now();
 $ const queryParams = {
@@ -70,11 +70,35 @@ $ const perPage = 12;
     <global-section-feed-wrapper aliases=aliases alias=alias modifiers=["upcoming"] with-ads=withAds>
       <@query-params ...queryParams />
       <@rail>
-        <h3 class="sticky-top">Submit a Conference</h3>
-        <p>Coming soon</p>
+         <marko-web-node-list collapsible=false class="sticky-top" modifiers=["section-list", "submit-event"]>
+          <@header>
+            Submit A Conference
+          </@header>
+          <@body>
+            <marko-web-auth0-access|context| requires-registration=true>
+              <if(!context.canAccess)>
+                <p>
+                  To submit your event please <a href="/login">sign in!</a>
+                </p>
+              </if>
+              <else-if(site.get("wufoo.userName") && site.get("wufoo.submitEvent.formHash"))>
+                <marko-web-browser-component
+                  name="WufooForm"
+                  props={
+                    userName: site.get("wufoo.userName"),
+                    formHash: site.get("wufoo.submitEvent.formHash"),
+                    height: site.get("wufoo.submitEvent.formHeight"),
+                  }
+                />
+              </else-if>
+              <else>
+                <p>Coming soon</p>
+              </else>
+            </marko-web-auth0-access>
+          </@body>
+        </marko-web-node-list>
       </@rail>
       <@rail>
-        <!-- <h3 class="sticky-top">Rail lower</h3> -->
       </@rail>
     </global-section-feed-wrapper>
   </@section>

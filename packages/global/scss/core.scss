@@ -417,6 +417,11 @@ label {
       }
     }
   }
+  &--submit-event {
+    #{ $self }__body {
+      padding: 0;
+    }
+  }
 }
 .top-story {
   &__row {
@@ -497,17 +502,4 @@ label {
       width: 24px;
     }
   }
-}
-.page {
-  &--content-event {
-    .page-dates {
-      &__content-starts,
-      &__content-ends {
-        @include skin-typography($style: "article-text", $link-style: "content-body");
-      }
-    }
-  }
-}
-.page-contact-details {
-  @include skin-typography($style: "article-text", $link-style: "content-body");
 }
