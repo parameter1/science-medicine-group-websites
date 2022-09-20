@@ -78,7 +78,7 @@ $ const perPage = 12;
             <marko-web-auth0-access|context| requires-registration=true>
               <if(!context.canAccess)>
                 <p>
-                  To submit your event please <a href="/login">sign in!</a>
+                  To submit a conference please <a href="/login">sign in!</a>
                 </p>
               </if>
               <else-if(site.get("wufoo.userName") && site.get("wufoo.submitEvent.formHash"))>
