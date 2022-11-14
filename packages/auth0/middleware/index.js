@@ -10,7 +10,7 @@ const Auth0 = require('../service');
 /**
  *
  */
-module.exports = (app, params = {}, serviceConfig = {}) => {
+module.exports = (app, params = {}) => {
   const config = validate(Joi.object({
     authRequired: Joi.boolean().default(false),
     auth0Logout: Joi.boolean().default(true),
@@ -24,7 +24,8 @@ module.exports = (app, params = {}, serviceConfig = {}) => {
 
   // Install Auth0 (management service)
   app.use((req, res, next) => {
-    const service = new Auth0(serviceConfig);
+    const { clientID, secret, issuerBaseURL } = config;
+    const service = new Auth0({ clientID, secret, issuerBaseURL });
     req.auth0 = service;
     res.locals.auth0 = service;
     next();
@@ -80,10 +81,12 @@ module.exports = (app, params = {}, serviceConfig = {}) => {
   app.post('/__auth0/resend-email', json(), asyncRoute(async (req, res) => {
     const { auth0, body } = req;
     const { userId } = body;
-    debug('resend email', userId);
-    const r = await auth0.sendVerificationEmail(userId); // @todo retrieve user id
-    debug('response', r);
-    res.json(r);
+    try {
+      const r = await auth0.sendVerificationEmail(userId); // @todo retrieve user id
+      res.json(r);
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
   }));
 
   // Load the IdentityX integration
