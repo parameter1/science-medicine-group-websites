@@ -1,4 +1,5 @@
 const onAuthenticationSuccess = require('./on-authentication-success');
+const onChangeEmailSuccess = require('./on-change-email-success');
 const onLoginLinkSent = require('./on-login-link-sent');
 const onUserProfileUpdate = require('./on-user-profile-update');
 
@@ -22,5 +23,12 @@ module.exports = (idxConfig, brazeConfig) => {
     name: 'onAuthenticationSuccess',
     shouldAwait: true,
     fn: args => onAuthenticationSuccess({ brazeConfig, ...args }),
+  });
+
+  // Handle changeEmail success
+  idxConfig.addHook({
+    name: 'onChangeEmailSuccess',
+    shouldAwait: true,
+    fn: args => onChangeEmailSuccess({ brazeConfig, ...args }),
   });
 };
