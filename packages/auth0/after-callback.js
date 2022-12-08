@@ -1,4 +1,5 @@
 const { decode } = require('jsonwebtoken');
+const { get } = require('@parameter1/base-cms-object-path');
 const debug = require('debug')('auth0');
 
 /**
@@ -16,6 +17,7 @@ module.exports = async (req, res, session) => {
   const { identityX: service, braze } = req;
   const { token } = service;
   const user = await decode(session.id_token);
+  const tenant = get(req, 'auth0.tenant');
 
   // If there's no Auth0 context, or an IdX context already exists, there's nothing to do here.
   if (!user || token) return session;
@@ -36,6 +38,15 @@ module.exports = async (req, res, session) => {
     await Promise.all([
       service.impersonateAppUser({ userId: appUser.id }),
       braze.confirmUser(appUser.email, appUser.id, 'auth0'),
+      service.addExternalUserId({
+        userId: appUser.id,
+        identifier: { value: user.sub },
+        namespace: {
+          provider: 'auth0',
+          tenant,
+          type: 'user',
+        },
+      }),
     ]);
     debug('impersonated', appUser.id);
   } catch (e) {
