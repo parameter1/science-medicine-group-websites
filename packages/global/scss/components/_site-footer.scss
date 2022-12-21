@@ -44,4 +44,15 @@
       }
     }
   }
+  .newsletter-signup-banner {
+    .btn {
+      margin-bottom: map-get($spacers, 2);
+    }
+    .btn-secondary,
+    .btn-secondary:hover,
+    .btn-secondary:focus {
+      background-color: $white;
+      margin-right: map-get($spacers, 2);
+    }
+  }
 }
