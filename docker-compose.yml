@@ -80,6 +80,7 @@ services:
     working_dir: /root/sites/scienceboard.net
     environment:
       <<: [*env, *env-leonis]
+      TENANT_KEY: smg_future
       HOST: www-smg-sab.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9951
@@ -143,6 +144,7 @@ services:
     working_dir: /root/sites/auntminnie.com
     environment:
       <<: [*env, *env-leonis]
+      TENANT_KEY: smg_future
       HOST: www-smg-am.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9954
@@ -164,6 +166,7 @@ services:
     working_dir: /root/sites/auntminnieeurope.com
     environment:
       <<: [*env, *env-leonis]
+      TENANT_KEY: smg_future
       HOST: www-smg-ame.dev.parameter1.com
       PORT: 80
       EXPOSED_PORT: 9955
