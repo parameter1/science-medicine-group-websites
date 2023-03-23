@@ -22,7 +22,12 @@
         Register and gain access to premium content, including this article and much more.
         To get started, click the button below.
       </p>
-      <a :href="loginUrl" class="btn btn-primary" :disabled="loading">
+      <a
+        :href="loginUrl"
+        class="btn btn-primary"
+        :disabled="loading"
+        @click="sendToLogin"
+      >
         Sign in
       </a>
       <p v-if="error" class="mt-3 text-danger">
@@ -94,6 +99,11 @@ export default {
       default: 'Email Address',
     },
 
+    additionalEventData: {
+      type: Object,
+      default: () => ({}),
+    },
+
     /**
      * Regional consent polices to display (if/when a user selects a country on login)
      * if enabled.
@@ -146,6 +156,17 @@ export default {
    */
   mounted() {
     this.emit('login-mounted');
+  },
+
+  methods: {
+    sendToLogin() {
+      this.emit('login-link-sent', {
+        source: this.source,
+        additionalEventData: {
+          ...(this.additionalEventData || {}),
+        },
+      });
+    },
   },
 };
 </script>
