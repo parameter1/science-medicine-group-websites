@@ -2,6 +2,7 @@ import { getAsObject } from "@parameter1/base-cms-object-path";
 import hierarchyAliases from "@parameter1/base-cms-marko-web/utils/hierarchy-aliases";
 import { getAsArray } from "@parameter1/base-cms-object-path";
 import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
+import queryFragment from "@parameter1/base-cms-marko-web-theme-monorail/graphql/fragments/content-page";
 import between from "../../../utils/between";
 
 import websiteSectionContentLoader from "../../../loaders/website-section-content";
@@ -128,7 +129,6 @@ $ const promise = websiteSectionContentLoader(apollo, {
                   <theme-latest-content-list-block nodes=standard.nodes title=rightRailHeader >
                     <@native-x index=between(1,2) name="default" aliases=aliases />
                   </theme-latest-content-list-block>
-                  <!-- <global-video-player /> -->
                   <div class="sticky-top page-rail">
                     <marko-web-identity-x-context|{ hasUser }|>
                       <if(!hasUser)>
@@ -139,6 +139,23 @@ $ const promise = websiteSectionContentLoader(apollo, {
                         />
                       </if>
                     </marko-web-identity-x-context>
+                    <marko-web-query|{ nodes }|
+                      name="website-scheduled-content"
+                      params={
+                        sectionAlias: "home",
+                        limit: 1,
+                        includeContentTypes: ["Video"],
+                        queryFragment
+                      }
+                    >
+                      <if(nodes[0].embedCode)>
+                        <marko-web-content-embed-code
+                          block-name="content-embed-code"
+                          obj=nodes[0]
+                          modifiers=["video-right-rail"]
+                        />
+                      </if>
+                    </marko-web-query>
                   </div>
                 </div>
               </div>
