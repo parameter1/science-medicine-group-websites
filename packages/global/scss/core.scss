@@ -608,3 +608,18 @@ label {
 .content-page-header .social-sharing {
   margin-top: 1rem;
 }
+
+.content-embed-code {
+  &__content-embed-code {
+    &--video-right-rail {
+      padding: .75rem 0;
+      text-align: center;
+      border-bottom: 1px solid #e3e4e5;
+      iframe {
+        max-width: 100%;
+        aspect-ratio: 16/9;
+        height: initial;
+      }
+    }
+  }
+}
