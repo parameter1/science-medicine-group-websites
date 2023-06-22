@@ -33,10 +33,7 @@ module.exports = async (req, res, session) => {
   // Upsert the IdentityX AppUser
   // federate trusted verification state to IdX and log in via impersonation api
   try {
-    let appUser = await service.loadAppUserByEmail(email);
-    if (!appUser) {
-      appUser = await service.createAppUser({ email });
-    }
+    const appUser = await service.createAppUser({ email });
     await service.impersonateAppUser({ userId: appUser.id });
     debug('impersonated', appUser.id);
     // @todo Remove this if/when hook dispatch is added to impersonateAppUser
