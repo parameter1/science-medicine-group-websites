@@ -10,12 +10,13 @@ const GlobalNewsletterMenu = () => import(/* webpackChunkName: "global-newslette
 const ContentMeterTrack = () => import(/* webpackChunkName: "content-meter-tracker" */ './track-content-meter.vue');
 const GlobalRevealAdHandler = () => import(/* webpackChunkName: "reveal-ad-handler" */ './reveal-ad-handler.vue');
 
-export default (Browser) => {
+export default (Browser, siteSpecificCustomComponents = {}) => {
   const { EventBus } = Browser;
   MonoRail(Browser, {
     enableOmedaIdentityX: false,
     idxArgs: {
       CustomLoginComponent: FormLogin,
+      ...siteSpecificCustomComponents,
     },
   });
   Browser.register('Auth0Authenticated', Auth0Authenticated, {
