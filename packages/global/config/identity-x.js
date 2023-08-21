@@ -12,18 +12,9 @@ module.exports = ({
   defaultCountryCode = '',
   requiredServerFields = [
     'givenName',
-    'familyName',
-    'organization',
-    'city',
-    'countryCode',
   ],
   requiredClientFields = [
     'givenName',
-    'familyName',
-    'organization',
-    'city',
-    'regionCode',
-    'countryCode',
   ],
   defaultFieldLabels = {
     phoneNumber: 'Mobile Phone',
@@ -38,7 +29,7 @@ module.exports = ({
     hiddenFields,
     requiredServerFields,
     requiredClientFields,
-    booleanQuestionsLabel: 'Choose your subscriptions:',
+    booleanQuestionsLabel: '',
     onHookError: newrelic.noticeError.bind(newrelic),
     emailValidator,
     defaultFieldLabels,
