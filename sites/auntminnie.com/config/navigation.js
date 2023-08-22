@@ -1,4 +1,3 @@
-const icleCfg = require('./wp-icle');
 const subscribe = require('./subscribe');
 const privacyPolicy = require('./privacy-policy');
 
@@ -68,17 +67,12 @@ const topics = [
 ];
 
 const resources = [
-  { href: '/', label: 'Careers' },
+  { href: 'https://my.auntminnie.com/', label: 'myAuntMinnie' },
+  { href: 'https://auntminnie.careerwebsite.com/home/index.cfm', label: 'Careers' },
   { href: 'https://www.auntminniecme.com/', label: 'CME' },
-  ...(icleCfg.enabled ? [
-    { href: `https://${icleCfg.hostname}/cases?VerifyLogin=1`, label: 'Cases', when: 'logged-in' },
-    { href: `https://${icleCfg.hostname}/cases?VerifyLogin=0`, label: 'Cases', when: 'logged-out' },
-  ] : []),
+  { href: 'https://my.auntminnie.com/cases', label: 'Cases' },
   { href: '/resources/conference', label: 'Conferences' },
-  ...(icleCfg.enabled ? [
-    { href: `https://${icleCfg.hostname}/forums?VerifyLogin=1`, label: 'Forums', when: 'logged-in' },
-    { href: `https://${icleCfg.hostname}/forums?VerifyLogin=0`, label: 'Forums', when: 'logged-out' },
-  ] : []),
+  { href: 'https://my.auntminnie.com/forums', label: 'Forums' },
   { href: '/resources/videos', label: 'Videos' },
   { href: '/resources/webinars', label: 'Webinars' },
 ];
@@ -231,16 +225,11 @@ module.exports = {
       label: 'Resources',
       colspan: 3,
       items: [
-        { href: '/', label: 'Careers' },
-        ...(icleCfg.enabled ? [
-          { href: `https://${icleCfg.hostname}/cases?VerifyLogin=1`, label: 'Cases', when: 'logged-in' },
-          { href: `https://${icleCfg.hostname}/cases?VerifyLogin=0`, label: 'Cases', when: 'logged-out' },
-        ] : []),
+        { href: 'https://my.auntminnie.com/', label: 'myAuntMinnie' },
+        { href: 'https://auntminnie.careerwebsite.com/home/index.cfm', label: 'Careers' },
+        { href: 'https://my.auntminnie.com/cases', label: 'Cases' },
         { href: 'https://www.auntminniecme.com/', label: 'CME' },
-        ...(icleCfg.enabled ? [
-          { href: `https://${icleCfg.hostname}/forums?VerifyLogin=1`, label: 'Forums', when: 'logged-in' },
-          { href: `https://${icleCfg.hostname}/forums?VerifyLogin=0`, label: 'Forums', when: 'logged-out' },
-        ] : []),
+        { href: 'https://my.auntminnie.com/forums', label: 'Forums' },
         { href: '/resources/videos', label: 'Videos' },
         { href: '/resources/webinars', label: 'Webinars' },
       ],
