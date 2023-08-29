@@ -236,7 +236,7 @@ module.exports = {
     },
     col3: {
       label: 'More',
-      colspan: 3,
+      colspan: 2,
       items: more,
     },
     items: [
