@@ -72,9 +72,6 @@ module.exports = {
     bgColor: '#000000',
   },
   pageDetails,
-<<<<<<< HEAD
   wpIcleHostname: 'my.auntminnie.com',
-=======
   defaultForumName: 'General Radiology',
->>>>>>> 4975e3aa740ded265dc4067d7690c3a4edbeaa4e
 };
