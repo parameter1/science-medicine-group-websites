@@ -19,7 +19,7 @@ module.exports = (siteHandler) => ({ from, req, app }) => {
     const match = siteHandler({ from, req, app });
     if (match) return match;
   }
-  const { originalUrl } = req;
+  const { path, originalUrl } = req;
   // match redirect patterns
   for (let i = 0; i < patterns.length; i += 1) {
     const { pattern, to, code } = patterns[i];
@@ -57,5 +57,13 @@ module.exports = (siteHandler) => ({ from, req, app }) => {
 
   if (req.query.sec === 'abt') return { to: '/page/about-us' };
 
+  // Attemtp to lowercase pathname as last attempt to match.
+  if (req.path !== req.path.toLowerCase()) {
+    const newTo = originalUrl.replace(path, path.toLowerCase());
+    return {
+      to: newTo,
+      code: 301, // Make permanante but up for debate
+    };
+  }
   return null;
 };
