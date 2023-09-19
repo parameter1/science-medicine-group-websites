@@ -57,7 +57,7 @@ module.exports = (siteHandler) => ({ from, req, app }) => {
 
   if (req.query.sec === 'abt') return { to: '/page/about-us' };
 
-  // Attemtp to lowercase pathname as last attempt to match.
+  // Attempt to lowercase pathname as last attempt to match.
   if (req.path !== req.path.toLowerCase()) {
     const newTo = originalUrl.replace(path, path.toLowerCase());
     return {
