@@ -64,6 +64,10 @@ module.exports = {
       title: 'Drop us a line!',
       hash: 'p1sbrws11c3y833',
     },
+    'resources/conferences': {
+      title: 'Submit A Conference!',
+      hash: 'z1xmbvxy0e84ke6',
+    },
   },
   inquiry: {
     enabled: false,
