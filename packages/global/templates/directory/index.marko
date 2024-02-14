@@ -19,20 +19,6 @@ $ const currentPage = search.getCurrentPage();
     </marko-web-resolve-page>
     <${input.head} />
   </@head>
-  <if(GAM.enableRevealAd)>
-    <@above-container>
-      <marko-web-resolve-page|{ data: section }| node=pageNode>
-        $ const aliases = hierarchyAliases(section);
-        <global-reveal-ad-handler select-all-targets=true path=GAM.getAdUnit({ name: "reskin", aliases }).path id="reveal-ad" />
-        <theme-gam-define-display-ad
-          name="reskin-mobile"
-          position="section_page"
-          aliases=aliases
-          modifiers=["inter-block"]
-        />
-      </marko-web-resolve-page>
-    </@above-container>
-  </if>
   <@page>
     <marko-web-resolve-page|{ data: section }| node=pageNode>
       $ const aliases = hierarchyAliases(section);
