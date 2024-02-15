@@ -48,24 +48,6 @@ $ const loadMore = defaultValue(input.loadMore, true);
             />
           </@section>
         </for>
-
-        <@section>
-          <if(withAds)>
-            <theme-gam-define-display-ad
-              name="reskin-mobile"
-              position="content_page"
-              aliases=aliases
-              modifiers=["inter-block"]
-            />
-          </if><if(withAds)>
-            <theme-gam-define-display-ad
-              name="reskin-mobile"
-              position="content_page"
-              aliases=aliases
-              modifiers=["inter-block"]
-            />
-          </if>
-        </@section>
       </marko-web-page-wrapper>
     </marko-web-resolve-page>
   </@page>
