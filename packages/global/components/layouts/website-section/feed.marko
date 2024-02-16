@@ -1,3 +1,4 @@
+import defaultValue from "@parameter1/base-cms-marko-core/utils/default-value";
 import { getAsArray } from "@parameter1/base-cms-object-path";
 
 $ const { id, alias, name, pageNode } = input;
@@ -31,7 +32,7 @@ $ const perPage = 12;
     />
   </@section> -->
 
-  <@section|{ blockName, section, aliases }|>
+  <@section|{ blockName, section, aliases, withAds }|>
     <if(input.beforeName)>
       <${input.beforeName}
         aliases=aliases
@@ -58,7 +59,7 @@ $ const perPage = 12;
       alias=alias
       display-pinned-content=input.displayPinnedContent
       flow=input.feedFlow
-      with-ads=input.withAds
+      with-ads=withAds
       query-params=input.queryParams
       above-the-fold=true
       ad-name=input.adName
