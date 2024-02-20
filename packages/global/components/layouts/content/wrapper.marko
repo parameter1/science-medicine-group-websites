@@ -68,9 +68,9 @@ $ const loadMore = defaultValue(input.loadMore, true);
       </marko-web-page-container>
     </if>
     <if(withAds)>
-    <marko-web-resolve-page|{ data: content }| node=pageNode>
-      <theme-fixed-ad-bottom aliases=hierarchyAliases(content.primarySection) />
-    </marko-web-resolve-page>
-  </if>
+      <marko-web-resolve-page|{ data: content }| node=pageNode>
+        <theme-fixed-ad-bottom aliases=hierarchyAliases(content.primarySection) />
+      </marko-web-resolve-page>
+    </if>
   </@below-page>
 </theme-content-page>
