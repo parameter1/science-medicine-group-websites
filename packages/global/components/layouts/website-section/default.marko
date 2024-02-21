@@ -19,19 +19,27 @@ $ const { GAM } = out.global;
     <@above-container>
       <marko-web-resolve-page|{ data: section }| node=pageNode>
         $ const aliases = hierarchyAliases(section);
-        <global-reveal-ad-handler select-all-targets=true path=GAM.getAdUnit({ name: "reskin", aliases }).path id="reveal-ad" />
-        <theme-gam-define-display-ad
-          name="reskin-mobile"
-          position="section_page"
-          aliases=aliases
-          modifiers=["inter-block"]
-        />
+        <!-- for now only do something special with content primaried here -->
+        $ const gamDisabledByAlias = getAsArray(GAM, "disableOnAliases").some((alias) => aliases.includes(alias));
+        <if(!gamDisabledByAlias)>
+          $ const aliases = hierarchyAliases(section);
+          <global-reveal-ad-handler select-all-targets=true path=GAM.getAdUnit({ name: "reskin", aliases }).path id="reveal-ad" />
+          <theme-gam-define-display-ad
+            name="reskin-mobile"
+            position="section_page"
+            aliases=aliases
+            modifiers=["inter-block"]
+          />
+        </if>
       </marko-web-resolve-page>
     </@above-container>
   </if>
   <@page>
     <marko-web-resolve-page|{ data: section }| node=pageNode>
       $ const aliases = hierarchyAliases(section);
+      <!-- for now only do something special with content primaried here -->
+      $ const gamDisabledByAlias = getAsArray(GAM, "disableOnAliases").some((alias) => aliases.includes(alias));
+      $ console.log('add section special logic here: ', section);
       <marko-web-page-wrapper>
         <for|s| of=sections>
           <@section|{ blockName }| modifiers=s.modifiers>
@@ -39,6 +47,7 @@ $ const { GAM } = out.global;
               block-name=blockName
               section=section
               aliases=aliases
+              with-ads=!gamDisabledByAlias
             />
           </@section>
         </for>
@@ -47,7 +56,12 @@ $ const { GAM } = out.global;
   </@page>
   <@foot>
     <marko-web-resolve-page|{ data: section }| node=pageNode>
-      <theme-fixed-ad-bottom aliases=hierarchyAliases(section) />
+      $ const aliases = hierarchyAliases(section);
+      <!-- for now only do something special with content primaried here -->
+      $ const gamDisabledByAlias = getAsArray(GAM, "disableOnAliases").some((alias) => aliases.includes(alias));
+      <if(!gamDisabledByAlias)>
+        <theme-fixed-ad-bottom aliases=aliases />
+      </if>
     </marko-web-resolve-page>
   </@foot>
 </theme-website-section-page>
