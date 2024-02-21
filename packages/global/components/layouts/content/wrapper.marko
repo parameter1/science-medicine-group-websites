@@ -64,9 +64,17 @@ $ const loadMore = defaultValue(input.loadMore, true);
       <marko-web-page-container for="content" tag="div" id=id type=type modifiers=["below"]>
         <marko-web-resolve-page|{ data: content, resolved }| node=pageNode>
           $ const aliases = hierarchyAliases(content.primarySection);
+          $ const labels = getAsArray(content, "labels");
+          $ const isSponsored = labels.includes("Sponsored");
+          $ const isPremium = labels.includes('Premium');
+          $ const gamDisabledByAlias = getAsArray(GAM, "disableOnAliases").some((alias) => aliases.includes(alias));
           <marko-web-page-wrapper>
             <@section>
-              <global-section-feed-wrapper aliases=aliases alias=content.primarySection.alias>
+              <global-section-feed-wrapper
+                aliases=aliases
+                alias=content.primarySection.alias
+                with-ads=(withAds && !isSponsored && !isPremium && !gamDisabledByAlias)
+              >
                 <@header>More in ${content.primarySection.name}</@header>
                 <@query-params excludeContentIds=[content.id] />
               </global-section-feed-wrapper>
@@ -77,7 +85,14 @@ $ const loadMore = defaultValue(input.loadMore, true);
     </if>
     <if(withAds)>
       <marko-web-resolve-page|{ data: content }| node=pageNode>
-        <theme-fixed-ad-bottom aliases=hierarchyAliases(content.primarySection) />
+        $ const aliases = hierarchyAliases(content.primarySection);
+        $ const labels = getAsArray(content, "labels");
+        $ const isSponsored = labels.includes("Sponsored");
+        $ const isPremium = labels.includes('Premium');
+        $ const gamDisabledByAlias = getAsArray(GAM, "disableOnAliases").some((alias) => aliases.includes(alias));
+        <if(!isSponsored && !isPremium && !gamDisabledByAlias)>
+          <theme-fixed-ad-bottom aliases=hierarchyAliases(content.primarySection) />
+        </if>
       </marko-web-resolve-page>
     </if>
   </@below-page>
