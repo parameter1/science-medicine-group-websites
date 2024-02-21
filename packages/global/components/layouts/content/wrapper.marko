@@ -22,14 +22,22 @@ $ const loadMore = defaultValue(input.loadMore, true);
   <if(GAM.enableRevealAd && withAds)>
     <@above-container>
       <marko-web-resolve-page|{ data: content }| node=pageNode>
+        <!-- Get and handle conent labels -->
+        $ const labels = getAsArray(content, "labels");
+        $ const isSponsored = labels.includes("Sponsored");
+        $ const isPremium = labels.includes('Premium');
         $ const aliases = hierarchyAliases(content.primarySection);
-        <global-reveal-ad-handler select-all-targets=true path=GAM.getAdUnit({ name: "reskin", aliases }).path id="reveal-ad" />
-        <theme-gam-define-display-ad
-          name="reskin-mobile"
-          position="content_page"
-          aliases=aliases
-          modifiers=["inter-block"]
-        />
+        <!-- for now only do something special with content primaried here -->
+        $ const gamDisabledByAlias = getAsArray(GAM, "disableOnAliases").some((alias) => aliases.includes(alias));
+        <if(withAds && !isSponsored && !isPremium && !gamDisabledByAlias)>
+          <global-reveal-ad-handler select-all-targets=true path=GAM.getAdUnit({ name: "reskin", aliases }).path id="reveal-ad" />
+          <theme-gam-define-display-ad
+            name="reskin-mobile"
+            position="content_page"
+            aliases=aliases
+            modifiers=["inter-block"]
+          />
+        </if>
       </marko-web-resolve-page>
     </@above-container>
   </if>

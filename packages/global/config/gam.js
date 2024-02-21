@@ -8,6 +8,11 @@ module.exports = ({
 
   config.enableRevealAd = false;
 
+  // should disable all ads on this section/children & content primaried to them
+  config.disableOnAliases = [
+    'resources/webinars',
+  ];
+
   config
     .setTemplate('LB-STICKY-BOTTOM', {
       size: [
