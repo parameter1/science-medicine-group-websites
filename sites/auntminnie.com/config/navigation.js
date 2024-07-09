@@ -35,7 +35,7 @@ const practiceManagement = [
   { href: '/practice-management/patient-safety', label: 'Patient Safety' },
   { href: '/practice-management/radiologic-technologist', label: 'Radiologic Technologist' },
   { href: '/practice-management/service', label: 'Service' },
-  { href: `${WPICLE_API_HOSTNAME}/salary-scan`, label: 'Salary Scan' },
+  { href: 'https://selfserve.decipherinc.com/survey/selfserve/2260/240613#?', label: 'Salary Scan', target: '_blank' },
 ];
 const radiologyEducation = [
   { href: '/radiology-education/medical-students', label: 'Medical Students' },
@@ -60,7 +60,7 @@ const subspecialties = [
 ];
 
 const topics = [
-  { href: 'https://www.auntminnieeurope.com/index.aspx?sec=def', label: 'Europe' },
+  { href: 'https://www.auntminnieeurope.com', label: 'Europe' },
   { href: '/clinical-news', label: 'Clinical News', children: clinicalNews },
   { href: '/imaging-informatics', label: 'Informatics', children: imagingInformatics },
   { href: '/industry-news', label: 'Industry News', children: industryNews },
@@ -84,6 +84,7 @@ const resources = [
   { href: '/page/advertising', label: 'Advertising' },
   { href: 'https://issuu.com/auntminnie/docs/2024_auntminnie_buyer_s_guide_01112024', label: 'Buyer\'s Guide', target: '_blank' },
   { href: '/resources/vendors', label: 'Vendors' },
+  { href: '/25-for-25', label: '25 for 25' },
 ];
 
 const more = [
@@ -242,6 +243,15 @@ module.exports = {
     },
     items: [
       privacyPolicy,
+      {
+        label: 'Privacy Settings',
+        attrs: {
+          onclick: '(function() { window.illow.showWidget();})()',
+        },
+        classNames: 'bannerLink',
+        // eslint-disable-next-line no-script-url
+        href: 'javascript:void(0)',
+      },
       { href: '/page/terms-conditions', label: 'Terms & Conditions' },
       { href: '/page/contact-us', label: 'Contact Us' },
       { href: '/site-map', label: 'Site Map' },
