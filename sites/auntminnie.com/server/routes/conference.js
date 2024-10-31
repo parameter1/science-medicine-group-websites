@@ -43,7 +43,7 @@ module.exports = (app) => {
 
   // RSNA
   app.get('/:alias(resources/conference/rsna)', (req, res) => {
-    res.redirect(301, '/resources/conference/rsna/2023');
+    res.redirect(301, '/resources/conference/rsna/2024');
   });
   rsnaAliases.forEach((year) => {
     app.get(`/:alias(resources/conference/rsna/${year})`, withWebsiteSection({
