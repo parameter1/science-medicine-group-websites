@@ -35,6 +35,9 @@ config
   ])
   .setAliasPlacements('demo', [
     { name: 'related-content', id: '66d72e96b7c9ff459c804dc6' },
+  ])
+  .setAliasPlacements('dental-practice/legal-issues', [
+    { name: 'related-content', id: '672be891521472d277b00339' },
   ]);
 
 module.exports = config;
