@@ -41,8 +41,8 @@ $ const sponsorLogo = site.get('search.sponsorLogos.page');
             <marko-web-search-filter-container modifiers=["sticky"] title={ value: `${i18n("Filters")}`}>
                 <@before-title|{ blockName }|>
                   <marko-web-website-section-name|{ value }| tag="h1" block-name=blockName obj={ name: title }>
-                    <if(currentPage > 1)>${value}: ${i18n("Page")} ${currentPage}</if>
-                    <else>${value}</else>
+                    <if(currentPage > 1)>$!{value}: ${i18n("Page")} ${currentPage}</if>
+                    <else>$!{value}</else>
                   </marko-web-website-section-name>
                 </@before-title>
               <marko-web-search-content-types-filter />
