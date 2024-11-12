@@ -48,8 +48,8 @@ $ const currentPage = search.getCurrentPage();
             </for>
           </theme-breadcrumbs>
           <marko-web-website-section-name|{ value }| tag="h1" block-name=blockName obj=section>
-            <if(currentPage > 1)>${value}: Page ${currentPage}</if>
-            <else>${value}</else>
+            <if(currentPage > 1)>$!{value}: Page ${currentPage}</if>
+            <else>$!{value}</else>
           </marko-web-website-section-name>
           <marko-web-website-section-description block-name=blockName obj=section />
         </@section>
