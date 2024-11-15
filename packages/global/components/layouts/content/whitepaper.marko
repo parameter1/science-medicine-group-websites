@@ -12,6 +12,12 @@ $ const { id, type, pageNode, ...rest } = input;
 
   <@section|{ blockName, content, aliases }| modifiers=["content-header"]>
     $ const { primarySection } = content;
+    $ const isSponsored = getAsArray(content, "labels").includes("Sponsored");
+    <div class="content-page-header">
+      <if(isSponsored)>
+        <div class="content-page-sponsored-header mb-3">Sponsored</div>
+      </if>
+    </div>
     <div class="content-page-header content-page-header--full-width">
       <theme-content-page-breadcrumbs section=primarySection />
       <marko-web-content-name tag="h1" block-name=blockName obj=content />
