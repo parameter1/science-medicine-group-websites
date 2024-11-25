@@ -25,7 +25,7 @@ module.exports = {
     enable: true,
     name: 'Stay Connected',
   },
-  signupPage: {
+  subscribePage: {
     name: 'Subscribe to get connected!',
     description: 'Delivered right to your inbox, our newsletter keeps you up to date on emerging technologies, testing and research, regulatory news, and economic trends shaping the clinical lab industry with dynamic, curated content.',
   },
