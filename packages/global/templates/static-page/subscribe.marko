@@ -1,0 +1,32 @@
+$ const type = "staticPage";
+$ const title = "Subscribe";
+$ const description = "Subscribe";
+
+<marko-web-default-page-layout type=type title=title description=description>
+  <@page>
+    <marko-web-page-wrapper>
+      <@section>
+        <div class="newsletter_signup_page">
+          <marko-web-element block-name="page-wrapper" name="website-section-name" tag="h1" >
+            Sign up for our newsletter
+          </marko-web-element>
+          <marko-web-element block-name="page-wrapper" name="website-section-description" >
+            <p>
+              <b>
+                Stay connected to the clinical lab industry with LabPulse
+              </b>
+            </p>
+            <p>
+              LabPulse is the leading provider of business insights for clinical laboratory, pathology, and diagnostic industry professionals.
+            </p>
+          </marko-web-element>
+          <marko-web-identity-x-context>
+            <div class="sticky-top mt-2">
+              <identity-x-newsletter-form-inline with-image=false type="pushdown" />
+            </div>
+          </marko-web-identity-x-context>
+        </div>
+      </@section>
+    </marko-web-page-wrapper>
+  </@page>
+</marko-web-default-page-layout>
