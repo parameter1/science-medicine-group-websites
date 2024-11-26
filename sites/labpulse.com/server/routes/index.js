@@ -5,6 +5,7 @@ const home = require('./home');
 const content = require('./content');
 const dynamicPages = require('./dynamic-page');
 const websiteSections = require('./website-section');
+const staticPages = require('./static-page');
 
 module.exports = (app) => {
   // Content Redirect Handler
@@ -16,6 +17,9 @@ module.exports = (app) => {
 
   // Dynamic Pages
   dynamicPages(app);
+
+  // Static Pages
+  staticPages(app);
 
   // Content Pages
   content(app);
