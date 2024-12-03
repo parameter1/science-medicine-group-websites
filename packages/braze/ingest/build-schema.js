@@ -25,6 +25,11 @@ module.exports = (req) => {
     if (!question) throw new Error(`Field ${key} is not present. Value cannot be accepted.`);
     // if (!question.active) throw new Error(`Field ${key} is not active. Cannot accept value.`);
     const answer = question.options.find((opt) => opt.externalIdentifier === v);
+    if (!answer && v === 'UNSET') {
+      // Returning January 1st 1970 at midnight GMT as an ObjectId string.
+      // https://steveridout.com/mongo-object-time/
+      return '000000000000000000000000';
+    }
     if (!answer) throw new Error(`"${v}" is not a valid option for field "${key}."`);
     return answer.id;
   });
