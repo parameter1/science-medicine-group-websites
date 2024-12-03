@@ -5,7 +5,6 @@ import GCSE from '@parameter1/base-cms-marko-web-gcse/browser';
 import Rudderstack from './rudderstack.vue';
 import CollapsibleSidebar from './collapsible-sidebar.vue';
 
-const ContentMeterTrack = () => import(/* webpackChunkName: "content-meter-tracker" */ './track-content-meter.vue');
 const GlobalRevealAdHandler = () => import(/* webpackChunkName: "reveal-ad-handler" */ './reveal-ad-handler.vue');
 
 export default (Browser) => {
@@ -13,7 +12,6 @@ export default (Browser) => {
   MonoRail(Browser, {
     enableOmedaIdentityX: false,
   });
-  Browser.register('ContentMeterTrack', ContentMeterTrack);
   PhotoSwipe(Browser);
   Braze(Browser);
   Browser.register('CollapsibleSidebar', CollapsibleSidebar);
