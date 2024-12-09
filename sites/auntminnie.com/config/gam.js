@@ -72,6 +72,7 @@ const aliases = [
   { alias: 'resources/conference/snmmi/2024', prefix: 'snmmi-2024' },
   { alias: 'resources/conference/cmimi/2024', prefix: 'cmimi-2024' },
   { alias: 'resources/conference/rsna/2024', prefix: 'rsna-2024' },
+  { alias: 'resources/conference/ismrm/2025', prefix: 'ismrm-2025' },
   // Sections
   { alias: 'demo' },
   { alias: 'resources' },
