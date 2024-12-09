@@ -47,6 +47,7 @@ const aliases = [
   { alias: 'demo' },
   { alias: 'resources/conferences/ids-2025' },
   { alias: 'resources/conferences/cds-midwinter-2025' },
+  { alias: 'resources' },
 ];
 
 aliases.forEach(({ alias, prefix = alias }) => config.setAliasAdUnits(alias, [
