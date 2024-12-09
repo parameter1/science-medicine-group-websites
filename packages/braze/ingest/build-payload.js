@@ -19,9 +19,12 @@ module.exports = async (idx, { userData, questions }) => {
     if (!v || !v.length) return arr;
     const q = fields.find((f) => get(f, 'externalId.identifier.value') === key);
     if (!q) throw new Error(`Unable to find a question for key ${key}.`);
+    const optionIdsRaw = Array.isArray(v) ? v : [v];
+    const forceUnset = optionIdsRaw.includes('000000000000000000000000');
+    const optionIds = optionIdsRaw.filter((optionId) => optionId !== '000000000000000000000000');
     return [
       ...arr,
-      { fieldId: q.id, optionIds: Array.isArray(v) ? v : [v] },
+      { fieldId: q.id, optionIds, forceUnset },
     ];
   }, []);
 
